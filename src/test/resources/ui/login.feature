@@ -1,7 +1,8 @@
 Feature: Ui Tests
 This is the description for the feature
 
-  @SeverityLevel.BLOCKER @Issue("JIRA-1") @Testcaseid("JIRA-642")
+  @SeverityLevel.BLOCKER 
+  @Issue("http://www.google.com")
   Scenario: Login successful with UI
 	This is the description for this scenario.
     Given Login page is displayed
