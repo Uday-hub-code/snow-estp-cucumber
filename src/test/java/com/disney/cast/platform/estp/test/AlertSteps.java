@@ -55,11 +55,11 @@ public class AlertSteps extends AbstractEstpApiTest {
                 })
                 .getResult();
         Assert.assertEquals(getAlertResponse.getStatus(), 200);
-        getResponse(getAlertResponse);
+        response(getAlertResponse);
     }
 
     @Attachment
-    public String getResponse(ApiTestResponse response) {
+    public String response(ApiTestResponse response) {
         return response.getBodyString();
     }
 
