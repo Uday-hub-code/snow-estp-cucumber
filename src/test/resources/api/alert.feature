@@ -3,8 +3,7 @@ Description for API tests
 
   @SeverityLevel.BLOCKER 
   @Issue("JIRA-1")
-  Scenario: Login successful
+  Scenario: /alert {GET}
 	This is the description for this scenario.
-    Given Login page is displayed
-    And Enter valid credentials
-    Then Welcome page is displayed
+    Given I send a request to alert
+    Then I should see all the alerts for the current user
