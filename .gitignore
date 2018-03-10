@@ -1,0 +1,40 @@
+*.class
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+# Eclipse generated files
+.classpath
+.project
+/target/
+.settings/
+.metadata/
+
+# Gulp required files
+/node_modules/
+/coverage/
+
+# Build generated files
+*.css
+src/test/javascript
+
+# eclipse files
+META-INF
+build.properties
+products.xlsx
+ExcelToJson.java
+api-test/generated_products.json
+api-test/mock.x_wdtpa_wdpr_decor_category.json
+api-test/mock.x_wdtpa_wdpr_decor_product.json
+
+src/test/resources/web-automation-config-local.json
+screenshots
+source
