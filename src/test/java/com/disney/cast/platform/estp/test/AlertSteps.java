@@ -17,11 +17,14 @@ import com.disney.cast.platform.estp.api.snow.tables.model.AlertTableRecord;
 import com.disney.cast.platform.estp.test.api.AbstractEstpApiTest;
 import com.fasterxml.jackson.core.type.TypeReference;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import ru.yandex.qatools.allure.annotations.Attachment;
 
 public class AlertSteps extends AbstractEstpApiTest {
+
+    private AlertTableApi alertTableApi;
 
     public AlertSteps() throws MalformedURLException {
         super();
@@ -36,12 +39,17 @@ public class AlertSteps extends AbstractEstpApiTest {
 
     @Given("^I send a request to alert$")
     public void i_send_a_request_to_alert() throws Throwable {
+        alertTableApi = new AlertTableApi();
+    }
+
+    @Then("^The status code should be OK$")
+    public void the_status_code_should_be_OK() throws Throwable {
         // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
     }
 
     @Then("^I should see all the alerts for the current user$")
     public void i_should_see_all_the_alerts_for_the_current_user() throws Throwable {
-        AlertTableApi alertTableApi = new AlertTableApi();
         List<AlertTableRecord> activeAlertsRecordsFromTableApi = alertTableApi
                 .get(clients().get(SNOWADMIN.toString()),
                         "?sysparm_query=u_active%3Dtrue")
