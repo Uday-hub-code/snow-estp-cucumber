@@ -42,7 +42,7 @@ public class AlertSteps extends AbstractEstpApiTest {
     }
 
     @Then("^The status code should be OK$")
-    public void the_status_code_should_be_OK(int statusCode) throws Throwable {
+    public void the_status_code_should_be_OK() throws Throwable {
         // Write code here that turns the phrase above into concrete actions
         Assert.assertEquals(statusCode, 200);
     }
