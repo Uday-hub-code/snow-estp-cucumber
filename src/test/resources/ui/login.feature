@@ -1,11 +1,10 @@
-Feature: Ui Tests
-This is the description for the feature
+Feature: UI
+Description for UI tests
 
   @SeverityLevel.BLOCKER 
-  @Issue("http://www.google.com")
-  Scenario: Login successful with UI
+  @Issue("JIRA-1")
+  Scenario: Login successful
 	This is the description for this scenario.
     Given Login page is displayed
     And Enter valid credentials
     Then Welcome page is displayed
-
