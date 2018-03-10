@@ -17,7 +17,6 @@ import com.disney.cast.platform.estp.api.snow.tables.model.AlertTableRecord;
 import com.disney.cast.platform.estp.test.api.AbstractEstpApiTest;
 import com.fasterxml.jackson.core.type.TypeReference;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import ru.yandex.qatools.allure.annotations.Attachment;
@@ -45,7 +44,6 @@ public class AlertSteps extends AbstractEstpApiTest {
     @Then("^The status code should be OK$")
     public void the_status_code_should_be_OK() throws Throwable {
         // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
     }
 
     @Then("^I should see all the alerts for the current user$")
