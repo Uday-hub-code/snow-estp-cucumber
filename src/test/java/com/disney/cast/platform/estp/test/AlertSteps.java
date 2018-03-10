@@ -19,6 +19,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+import ru.yandex.qatools.allure.annotations.Attachment;
 
 public class AlertSteps extends AbstractEstpApiTest {
 
@@ -54,6 +55,12 @@ public class AlertSteps extends AbstractEstpApiTest {
                 })
                 .getResult();
         Assert.assertEquals(getAlertResponse.getStatus(), 200);
+        makeAttach();
+    }
+
+    @Attachment
+    public String makeAttach() {
+        return "yeah, 2 is 2";
     }
 
 }
