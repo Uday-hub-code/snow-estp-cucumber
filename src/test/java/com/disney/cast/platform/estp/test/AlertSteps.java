@@ -81,7 +81,6 @@ public class AlertSteps extends AbstractEstpApiTest {
     public void i_should_see_an_error_message() throws Throwable {
         String UNAVAILABLE_BODY = "error.system.service.unavailable.body";
         String UNAVAILABLE_TITLE = "error.system.service.unavailable.title";
-        attachJson(response.getBodyString());
         Message message = response
                 .getBodyObject(new TypeReference<Result<Message>>() {
                 })
