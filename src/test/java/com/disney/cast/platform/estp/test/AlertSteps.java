@@ -2,6 +2,7 @@ package com.disney.cast.platform.estp.test;
 
 import static com.disney.cast.platform.estp.api.app.AlertApi.getAlert;
 import static com.disney.cast.platform.estp.test.api.ApiAuthLevel.PLANNER;
+import static org.junit.Assert.assertEquals;
 
 import java.net.MalformedURLException;
 import java.util.Iterator;
@@ -10,6 +11,7 @@ import java.util.List;
 import org.junit.Assert;
 
 import com.disney.automation.servicetesting.core.ApiTestResponse;
+import com.disney.cast.platform.common.api.app.model.Message;
 import com.disney.cast.platform.common.api.model.Result;
 import com.disney.cast.platform.estp.api.app.model.Alert;
 import com.disney.cast.platform.estp.api.snow.tables.model.AlertTableRecord;
@@ -38,6 +40,7 @@ public class AlertSteps extends AbstractEstpApiTest {
 
     @Before
     public void beforeScenario() throws Exception {
+        System.out.println("----------------Before scenario----------------");
     }
 
     @Given("^System is unavailable$")
@@ -64,6 +67,19 @@ public class AlertSteps extends AbstractEstpApiTest {
         attachJson(getAlertResponse.getBodyString());
     }
 
+    @Then("^I should see an error message$")
+    public void i_should_see_an_error_message() throws Throwable {
+        String UNAVAILABLE_BODY = "error.system.service.unavailable.body";
+        String UNAVAILABLE_TITLE = "error.system.service.unavailable.title";
+        attachJson(getAlertResponse.getBodyString());
+        Message message = getAlertResponse
+                .getBodyObject(new TypeReference<Result<Message>>() {
+                })
+                .getResult();
+        assertEquals(UNAVAILABLE_BODY, message.getMessageKey());
+        assertEquals(UNAVAILABLE_TITLE, message.getTitleKey());
+    }
+
     @Attachment(value = "JSON", type = "application/json")
     public String attachJson(String json) {
         return json;
@@ -72,6 +88,7 @@ public class AlertSteps extends AbstractEstpApiTest {
     @After
     public void afterScenario() throws Exception {
         DataManager.getFeatureDataManager().setUnavailable(false);
+        System.out.println("----------------After scenario----------------");
     }
 
 }
