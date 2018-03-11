@@ -11,7 +11,7 @@ Description for API tests
     And I should see all the alerts for the current user
     But Delete alerts created
 
-  @SeverityLevel.BLOCKER 
+  @SeverityLevel.NORMAL 
   @Issue("JIRA-1099")
   Scenario: /alert when system is down
 	This is the description for this scenario.
@@ -20,7 +20,9 @@ Description for API tests
     Then The status code should be "503"
     And I should see an error message
 
-    Scenario: /alert with wrong user
+  @SeverityLevel.TRIVIAL
+  @Issue("JIRA-1099")
+  Scenario: /alert with wrong user
     This is the description for this scenario
     When I send a request to alert with wrong user
     Then The status code should be "401"

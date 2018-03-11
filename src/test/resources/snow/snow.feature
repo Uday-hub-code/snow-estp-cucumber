@@ -1,10 +1,17 @@
 Feature: Snow
 Description for Snow tests
 
-  @SeverityLevel.BLOCKER 
-  @link("http://www.google.com")
-  Scenario: Login successful
+  @SeverityLevel.NORMAL
+  Scenario: Features
 	This is the description for this scenario.
     Given Login page is displayed
     And Enter valid credentials
     Then Welcome page is displayed
+
+  @SeverityLevel.NORMAL
+  Scenario: Configs
+	This is the description for this scenario.
+    Given Login page is displayed
+    And Enter valid credentials
+    Then Welcome page is displayed
+    
