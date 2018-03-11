@@ -2,7 +2,7 @@ Feature: Api
 Description for API tests
 
   @SeverityLevel.BLOCKER 
-  @Issue("JIRA-1")
+  @Issue("JIRA-1099")
   Scenario: /alert {GET}
 	This is the description for this scenario.
     Given I send a request to alert

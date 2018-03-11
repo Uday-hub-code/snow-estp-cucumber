@@ -69,4 +69,9 @@ public class AlertDataManager extends AbstractDataManager<AlertTableApi, AlertTa
             getApi().delete(getClient(), alert.getSysId());
         }
     }
+
+    public void delete(AlertTableRecord alert) throws Exception {
+        getApi().delete(getClient(), alert.getSysId());
+    }
+
 }
