@@ -49,6 +49,7 @@ public class AlertSteps extends AbstractEstpApiTest {
                 .getBodyObject(new TypeReference<Result<List<Alert>>>() {
                 })
                 .getResult();
+        attachResponse(getAlertResponse);
     }
 
     @Then("^The status code should be OK$")
@@ -61,7 +62,7 @@ public class AlertSteps extends AbstractEstpApiTest {
     }
 
     @Attachment
-    public String response(ApiTestResponse response) {
+    public String attachResponse(ApiTestResponse response) {
         return response.getBodyString();
     }
 
