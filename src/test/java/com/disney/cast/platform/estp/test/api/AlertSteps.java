@@ -61,9 +61,9 @@ public class AlertSteps extends AbstractEstpApiTest {
     @When("^I send a request to alert$")
     public void i_send_a_request_to_alert() throws Throwable {
         AlertApi alertApi = new AlertApi();
-        attachJson(alertApi.getRequest().getBodyString());
         response = alertApi.get(clients().get(PLANNER.toString()));
         attachJson(response.getBodyString());
+        attachJson(alertApi.getRequest().getBodyString());
     }
 
     @Then("^The status code should be \"([^\"]*)\"$")
