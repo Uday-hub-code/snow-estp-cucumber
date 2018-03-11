@@ -19,28 +19,26 @@ import com.disney.cast.platform.estp.data.DataManager;
 import com.disney.cast.platform.estp.test.api.AbstractEstpApiTest;
 import com.fasterxml.jackson.core.type.TypeReference;
 
-import cucumber.api.java.After;
-import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
-import ru.yandex.qatools.allure.annotations.Attachment;
+import cucumber.api.java.en.When;
 
 /**
  * @author roberto
  */
 public class AlertSteps extends AbstractEstpApiTest {
 
-    private ApiTestResponse getAlertResponse;
+    private ApiTestResponse response;
     private Iterator<AlertTableRecord> alertsIterator;
 
     public AlertSteps() throws MalformedURLException {
         super();
     }
 
-    @Before
-    public void beforeScenario() throws Exception {
-        System.out.println("----------------Before scenario----------------");
+    @Given("^System is available$")
+    public void system_is_available() throws Throwable {
+        DataManager.getFeatureDataManager().setUnavailable(false);
     }
 
     @Given("^System is unavailable$")
@@ -48,31 +46,36 @@ public class AlertSteps extends AbstractEstpApiTest {
         DataManager.getFeatureDataManager().setUnavailable(true);
     }
 
-    @Given("^I send a request to alert$")
+    @Given("^I create an alert$")
+    public void i_create_an_alert() throws Throwable {
+        alertsIterator = DataManager.getAlertDataManager().addActive(1).iterator();
+    }
+
+    @When("^I send a request to alert$")
     public void i_send_a_request_to_alert() throws Throwable {
-        getAlertResponse = getAlert(clients().get(PLANNER.toString()));
+        response = getAlert(clients().get(PLANNER.toString()));
     }
 
     @Then("^The status code should be \"([^\"]*)\"$")
     public void the_status_code_should_be(String expected) throws Throwable {
-        Assert.assertEquals(Integer.parseInt(expected), getAlertResponse.getStatus());
+        Assert.assertEquals(Integer.parseInt(expected), response.getStatus());
     }
 
     @And("^I should see all the alerts for the current user$")
     public void i_should_see_all_the_alerts_for_the_current_user() throws Throwable {
-        List<Alert> returnedAlerts = getAlertResponse
+        List<Alert> returnedAlerts = response
                 .getBodyObject(new TypeReference<Result<List<Alert>>>() {
                 })
                 .getResult();
-        attachJson(getAlertResponse.getBodyString());
+        attachJson(response.getBodyString());
     }
 
     @Then("^I should see an error message$")
     public void i_should_see_an_error_message() throws Throwable {
         String UNAVAILABLE_BODY = "error.system.service.unavailable.body";
         String UNAVAILABLE_TITLE = "error.system.service.unavailable.title";
-        attachJson(getAlertResponse.getBodyString());
-        Message message = getAlertResponse
+        attachJson(response.getBodyString());
+        Message message = response
                 .getBodyObject(new TypeReference<Result<Message>>() {
                 })
                 .getResult();
@@ -80,15 +83,15 @@ public class AlertSteps extends AbstractEstpApiTest {
         assertEquals(UNAVAILABLE_TITLE, message.getTitleKey());
     }
 
-    @Attachment(value = "JSON", type = "application/json")
-    public String attachJson(String json) {
-        return json;
-    }
+    @Then("^Delete alerts created$")
+    public void delete_alerts_created() throws Throwable {
+        if (alertsIterator != null) {
+            while (alertsIterator.hasNext()) {
+                AlertTableRecord alert = alertsIterator.next();
+                DataManager.getAlertDataManager().delete(alert);
+            }
 
-    @After
-    public void afterScenario() throws Exception {
-        DataManager.getFeatureDataManager().setUnavailable(false);
-        System.out.println("----------------After scenario----------------");
+        }
     }
 
 }

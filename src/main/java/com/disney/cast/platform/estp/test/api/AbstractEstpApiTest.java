@@ -4,6 +4,8 @@ import java.net.MalformedURLException;
 
 import com.disney.automation.servicetesting.core.AbstractApiTest;
 
+import ru.yandex.qatools.allure.annotations.Attachment;
+
 /**
  * @author walter.finkbeiner
  */
@@ -13,8 +15,14 @@ public abstract class AbstractEstpApiTest extends AbstractApiTest {
         super();
     }
 
+    @Attachment(value = "JSON", type = "application/json")
+    public String attachJson(String json) {
+        return json;
+    }
+
     @Override
     protected Object[] setAuthLevels() {
         return ApiAuthLevel.values();
     }
+
 }
