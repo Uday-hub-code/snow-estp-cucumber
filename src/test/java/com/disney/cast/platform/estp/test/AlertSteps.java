@@ -61,6 +61,7 @@ public class AlertSteps extends AbstractEstpApiTest {
     @When("^I send a request to alert$")
     public void i_send_a_request_to_alert() throws Throwable {
         response = getAlert(clients().get(PLANNER.toString()));
+        attachJson(response.getBodyString());
     }
 
     @Then("^The status code should be \"([^\"]*)\"$")
@@ -74,7 +75,6 @@ public class AlertSteps extends AbstractEstpApiTest {
                 .getBodyObject(new TypeReference<Result<List<Alert>>>() {
                 })
                 .getResult();
-        attachJson(response.getBodyString());
     }
 
     @Then("^I should see an error message$")
