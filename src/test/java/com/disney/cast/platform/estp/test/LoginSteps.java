@@ -8,6 +8,7 @@ import com.disney.automation.webframework.config.User;
 import com.disney.cast.platform.estp.test.ui.AbstractEstpUiTest;
 import com.disney.cast.platform.estp.ui.app.pages.ApplicationsLoginPage;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 
@@ -54,6 +55,12 @@ public class LoginSteps extends AbstractEstpUiTest {
     @Then("^Wrong password message is displayed$")
     public void wrong_password_message_is_displayed() throws Throwable {
         // Write code here that turns the phrase above into concrete actions
+    }
+
+    @Then("^I should see an error here$")
+    public void i_should_see_an_error_here() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
     }
 
 }
