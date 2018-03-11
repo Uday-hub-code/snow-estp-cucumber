@@ -59,7 +59,7 @@ public class AlertSteps extends AbstractEstpApiTest {
     public void i_should_see_all_the_alerts_for_the_current_user() throws Throwable {
     }
 
-    @Attachment(value = "Response", type = "json")
+    @Attachment(value = "Response", type = "application/json")
     public String attachResponse(ApiTestResponse response) {
         return response.getBodyString();
     }
