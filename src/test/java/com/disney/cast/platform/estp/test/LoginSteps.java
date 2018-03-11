@@ -66,7 +66,7 @@ public class LoginSteps extends AbstractEstpUiTest {
         // Write code here that turns the phrase above into concrete actions
     }
 
-    @Attachment("Screenshot on failure")
+    @Attachment("Screenshot")
     public byte[] makeScreenshotOnFailure() {
         return ((TakesScreenshot) Drivers.INSTANCE.get()).getScreenshotAs(OutputType.BYTES);
     }
