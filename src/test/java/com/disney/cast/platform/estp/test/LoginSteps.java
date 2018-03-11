@@ -1,9 +1,24 @@
 package com.disney.cast.platform.estp.test;
 
+import static com.disney.cast.platform.estp.test.ui.UiAuthLevel.SNOWADMIN;
+
+import java.net.MalformedURLException;
+
+import com.disney.automation.webframework.config.User;
+import com.disney.cast.platform.estp.test.ui.AbstractEstpUiTest;
+import com.disney.cast.platform.estp.ui.app.pages.ApplicationsLoginPage;
+
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 
-public class LoginSteps {
+public class LoginSteps extends AbstractEstpUiTest {
+
+    public LoginSteps() throws MalformedURLException {
+        super();
+    }
+
+    private final User planner = users().get(SNOWADMIN.toString());
+
     @Given("^Login page is displayed$")
     public void login_page_is_displayed() throws Throwable {
         // Write code here that turns the phrase above into concrete actions
@@ -16,7 +31,13 @@ public class LoginSteps {
 
     @Then("^Welcome page is displayed$")
     public void welcome_page_is_displayed() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
+        ApplicationsLoginPage loginPage = new ApplicationsLoginPage();
+        Thread.sleep(5000);
+        // HomePage homePage = loginPage.logIn(planner.getUserName(), planner.getPass(),
+        // HomePage.class);
+
+        // assertTrue("Planner should have been able to log in. Home page is not displayed",
+        // homePage.isVisible());
     }
 
     @Given("^Enter invalid username and valid password$")
