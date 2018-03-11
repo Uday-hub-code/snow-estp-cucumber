@@ -63,7 +63,6 @@ public class AlertSteps extends AbstractEstpApiTest {
         AlertApi alertApi = new AlertApi(clients().get(PLANNER.toString()));
         response = alertApi.get();
         attachJson(response.getBodyString());
-        attachString(alertApi.getRequest().getPath());
     }
 
     @Then("^The status code should be \"([^\"]*)\"$")
