@@ -57,7 +57,7 @@ public class AlertSteps extends AbstractEstpApiTest {
                 .getBodyObject(new TypeReference<Result<List<Alert>>>() {
                 })
                 .getResult();
-        attachJson(getAlertResponse.toString());
+        attachJson(getAlertResponse.getBodyString());
     }
 
     @Attachment(value = "JSON", type = "application/json")
