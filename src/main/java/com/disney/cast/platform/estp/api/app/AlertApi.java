@@ -8,18 +8,23 @@ import com.disney.automation.servicetesting.core.ApiTestResponse;
 
 public class AlertApi {
 
+    private ApiTestClient apiTestClient;
     private ApiTestRequest request;
     private static final String PATH = "/api/x_wdtpa_wdpr_vacat/v1/vacation_planner/alert";
+
+    public AlertApi(final ApiTestClient apiTestClient) {
+        this.apiTestClient = apiTestClient;
+    }
 
     public ApiTestRequest getRequest() {
         return request;
     }
 
-    public ApiTestResponse get(final ApiTestClient client) throws Exception {
+    public ApiTestResponse get() throws Exception {
         request = new ApiTestRequest.Builder()
                 .setPath(PATH)
                 .setMethod(GET)
                 .build();
-        return client.execute(request);
+        return apiTestClient.execute(request);
     }
 }

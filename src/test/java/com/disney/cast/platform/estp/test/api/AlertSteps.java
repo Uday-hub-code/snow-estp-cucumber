@@ -53,17 +53,17 @@ public class AlertSteps extends AbstractEstpApiTest {
 
     @When("^I send a request to alert with wrong user$")
     public void i_send_a_request_to_alert_with_wrong_user() throws Throwable {
-        AlertApi alertApi = new AlertApi();
-        response = alertApi.get(clients().get(ApiAuthLevel.WRONG_AUTH.toString()));
+        AlertApi alertApi = new AlertApi(clients().get(ApiAuthLevel.WRONG_AUTH.toString()));
+        response = alertApi.get();
         attachJson(response.getBodyString());
     }
 
     @When("^I send a request to alert$")
     public void i_send_a_request_to_alert() throws Throwable {
-        AlertApi alertApi = new AlertApi();
-        response = alertApi.get(clients().get(PLANNER.toString()));
+        AlertApi alertApi = new AlertApi(clients().get(PLANNER.toString()));
+        response = alertApi.get();
         attachJson(response.getBodyString());
-        attachJson(alertApi.getRequest().getBodyString());
+        attachString(alertApi.getRequest().getPath());
     }
 
     @Then("^The status code should be \"([^\"]*)\"$")

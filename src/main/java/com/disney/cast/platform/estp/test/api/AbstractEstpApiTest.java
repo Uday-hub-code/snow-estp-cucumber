@@ -20,6 +20,11 @@ public abstract class AbstractEstpApiTest extends AbstractApiTest {
         return json;
     }
 
+    @Attachment(value = "String", type = "text")
+    public String attachString(String string) {
+        return string;
+    }
+
     @Override
     protected Object[] setAuthLevels() {
         return ApiAuthLevel.values();
