@@ -56,6 +56,7 @@ public class AlertSteps extends AbstractEstpApiTest {
     @When("^I send a request to alert with wrong user$")
     public void i_send_a_request_to_alert_with_wrong_user() throws Throwable {
         response = getAlert(clients().get(ApiAuthLevel.WRONG_AUTH.toString()));
+        attachJson(response.getBodyString());
     }
 
     @When("^I send a request to alert$")
