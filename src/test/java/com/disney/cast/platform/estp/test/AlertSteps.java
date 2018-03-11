@@ -48,6 +48,7 @@ public class AlertSteps extends AbstractEstpApiTest {
 
     @Given("^I create an alert$")
     public void i_create_an_alert() throws Throwable {
+        DataManager.getAlertDataManager().deleteAll();
         alertsIterator = DataManager.getAlertDataManager().addActive(1).iterator();
     }
 
