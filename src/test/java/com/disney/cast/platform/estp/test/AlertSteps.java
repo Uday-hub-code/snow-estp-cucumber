@@ -1,6 +1,7 @@
 package com.disney.cast.platform.estp.test;
 
 import static com.disney.cast.platform.estp.api.app.AlertApi.getAlert;
+import static com.disney.cast.platform.estp.data.DataManager.ALERT_DATA_MANAGER;
 import static com.disney.cast.platform.estp.test.api.ApiAuthLevel.PLANNER;
 import static com.disney.cast.platform.estp.test.api.ApiAuthLevel.SNOWADMIN;
 
@@ -21,21 +22,18 @@ import ru.yandex.qatools.allure.annotations.Attachment;
 
 public class AlertSteps extends AbstractEstpApiTest {
 
-    private AlertTableApi alertTableApi;
-
     public AlertSteps() throws MalformedURLException {
         super();
-        // TODO Auto-generated constructor stub
     }
 
     @Override
     protected void specificSetUp() throws Exception {
-        // TODO Auto-generated method stub
-
     }
 
     @Given("^I send a request to alert$")
     public void i_send_a_request_to_alert() throws Throwable {
+        ALERT_DATA_MANAGER.addActive(1);
+
         AlertTableApi alertTableApi = new AlertTableApi();
         List<AlertTableRecord> activeAlertsRecordsFromTableApi = alertTableApi
                 .get(clients().get(SNOWADMIN.toString()),
@@ -52,8 +50,8 @@ public class AlertSteps extends AbstractEstpApiTest {
         attachResponse(getAlertResponse);
     }
 
-    @Then("^The status code should be OK$")
-    public void the_status_code_should_be_OK() throws Throwable {
+    @Then("^The status code should be 200$")
+    public void the_status_code_should_be_200() throws Throwable {
         // Write code here that turns the phrase above into concrete actions
     }
 
