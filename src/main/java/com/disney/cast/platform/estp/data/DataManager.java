@@ -17,6 +17,7 @@ public class DataManager implements MethodRule, Logging {
     private static PayrollDataManager PAYROLL_DATA_MANAGER;
     private static UserDataManager USER_DATA_MANAGER;
     private static UIUserDataManager UI_USER_DATA_MANAGER;
+    private static FeatureDataManager FEATURE_DATA_MANAGER;
 
     @Override
     public Statement apply(Statement base, FrameworkMethod method, Object target) {
@@ -46,6 +47,13 @@ public class DataManager implements MethodRule, Logging {
             }
         }
         return ALERT_DATA_MANAGER;
+    }
+
+    public static FeatureDataManager getFeatureDataManager() throws IOException {
+        if (FEATURE_DATA_MANAGER == null) {
+            FEATURE_DATA_MANAGER = new FeatureDataManager();
+        }
+        return FEATURE_DATA_MANAGER;
     }
 
 }

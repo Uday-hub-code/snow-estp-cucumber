@@ -38,7 +38,11 @@ public class AlertSteps extends AbstractEstpApiTest {
 
     @Before
     public void beforeScenario() throws Exception {
-        alertsIterator = DataManager.getAlertDataManager().addActive(1).iterator();
+    }
+
+    @Given("^System is unavailable$")
+    public void system_is_unavailable() throws Throwable {
+        DataManager.getFeatureDataManager().setUnavailable(true);
     }
 
     @Given("^I send a request to alert$")
@@ -67,10 +71,7 @@ public class AlertSteps extends AbstractEstpApiTest {
 
     @After
     public void afterScenario() throws Exception {
-        while (alertsIterator.hasNext()) {
-            AlertTableRecord alertTableRecord = alertsIterator.next();
-            DataManager.getAlertDataManager().delete(alertTableRecord);
-        }
+        DataManager.getFeatureDataManager().setUnavailable(false);
     }
 
 }
