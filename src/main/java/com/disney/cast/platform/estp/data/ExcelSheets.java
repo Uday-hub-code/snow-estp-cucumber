@@ -4,9 +4,17 @@ import com.disney.cast.platform.common.data.Sheets;
 
 public enum ExcelSheets implements Sheets {
     CONFIG,
-    ALERT,
     FEATURE,
+    FAQ,
+    ENTITLEMENT_STATUS,
+    LOCATION,
+    ALERT,
+    REWARD_LEVEL,
     PAYROLL,
+    REWARD,
+    ELEGIBILITY,
+    USER,
+    ENTITLEMENT,
     PERFORMANCE;
 
     @Override
