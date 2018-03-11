@@ -72,7 +72,7 @@ public class AlertSteps extends AbstractEstpApiTest {
 
     @And("^I should see all the alerts for the current user$")
     public void i_should_see_all_the_alerts_for_the_current_user() throws Throwable {
-        List<Alert> returnedAlerts = response
+        List<Alert> implementMe = response
                 .getBodyObject(new TypeReference<Result<List<Alert>>>() {
                 })
                 .getResult();
