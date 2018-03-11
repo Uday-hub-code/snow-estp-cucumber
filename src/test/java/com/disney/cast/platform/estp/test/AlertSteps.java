@@ -17,6 +17,7 @@ import com.disney.cast.platform.estp.api.app.model.Alert;
 import com.disney.cast.platform.estp.api.snow.tables.model.AlertTableRecord;
 import com.disney.cast.platform.estp.data.DataManager;
 import com.disney.cast.platform.estp.test.api.AbstractEstpApiTest;
+import com.disney.cast.platform.estp.test.api.ApiAuthLevel;
 import com.fasterxml.jackson.core.type.TypeReference;
 
 import cucumber.api.java.en.And;
@@ -50,6 +51,11 @@ public class AlertSteps extends AbstractEstpApiTest {
     public void i_create_an_alert() throws Throwable {
         DataManager.getAlertDataManager().deleteAll();
         alertsIterator = DataManager.getAlertDataManager().addActive(1).iterator();
+    }
+
+    @When("^I send a request to alert with wrong user$")
+    public void i_send_a_request_to_alert_with_wrong_user() throws Throwable {
+        response = getAlert(clients().get(ApiAuthLevel.WRONG_AUTH.toString()));
     }
 
     @When("^I send a request to alert$")
