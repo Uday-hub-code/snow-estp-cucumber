@@ -1,4 +1,4 @@
-package com.disney.cast.platform.estp.test;
+package com.disney.cast.platform.estp.test.api;
 
 import static com.disney.cast.platform.estp.api.app.AlertApi.getAlert;
 import static com.disney.cast.platform.estp.test.api.ApiAuthLevel.PLANNER;

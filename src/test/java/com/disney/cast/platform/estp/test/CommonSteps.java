@@ -9,7 +9,7 @@ import cucumber.api.java.Before;
  */
 public class CommonSteps {
 
-    @Before
+    @Before(order = 0)
     public void beforeScenario() throws Exception {
         DataManager.getFeatureDataManager().setUnavailable(false);
     }
