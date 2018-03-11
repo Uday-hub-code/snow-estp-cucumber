@@ -13,10 +13,10 @@ import com.disney.automation.webframework.logging.Logging;
  */
 public class DataManager implements MethodRule, Logging {
 
-    public static AlertDataManager ALERT_DATA_MANAGER;
-    public static PayrollDataManager PAYROLL_DATA_MANAGER;
-    public static UserDataManager USER_DATA_MANAGER;
-    public static UIUserDataManager UI_USER_DATA_MANAGER;
+    private static AlertDataManager ALERT_DATA_MANAGER;
+    private static PayrollDataManager PAYROLL_DATA_MANAGER;
+    private static UserDataManager USER_DATA_MANAGER;
+    private static UIUserDataManager UI_USER_DATA_MANAGER;
 
     @Override
     public Statement apply(Statement base, FrameworkMethod method, Object target) {
@@ -36,4 +36,16 @@ public class DataManager implements MethodRule, Logging {
             }
         };
     }
+
+    public static AlertDataManager getAlertDataManager() {
+        if (ALERT_DATA_MANAGER == null) {
+            try {
+                ALERT_DATA_MANAGER = new AlertDataManager();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return ALERT_DATA_MANAGER;
+    }
+
 }

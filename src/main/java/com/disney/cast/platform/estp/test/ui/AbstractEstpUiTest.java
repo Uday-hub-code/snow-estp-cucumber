@@ -1,7 +1,5 @@
 package com.disney.cast.platform.estp.test.ui;
 
-import static com.disney.cast.platform.estp.data.DataManager.ALERT_DATA_MANAGER;
-
 import java.net.MalformedURLException;
 
 import org.junit.Before;
@@ -25,7 +23,6 @@ public abstract class AbstractEstpUiTest extends JUnit4WebDriverTest {
 
     @Before
     public void generalSetup() throws Exception {
-        ALERT_DATA_MANAGER.deleteAll();
         specificSetUp();
     }
 

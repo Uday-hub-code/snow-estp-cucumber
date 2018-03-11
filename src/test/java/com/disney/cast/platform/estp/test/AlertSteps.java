@@ -1,7 +1,6 @@
 package com.disney.cast.platform.estp.test;
 
 import static com.disney.cast.platform.estp.api.app.AlertApi.getAlert;
-import static com.disney.cast.platform.estp.data.DataManager.ALERT_DATA_MANAGER;
 import static com.disney.cast.platform.estp.test.api.ApiAuthLevel.PLANNER;
 import static com.disney.cast.platform.estp.test.api.ApiAuthLevel.SNOWADMIN;
 
@@ -13,6 +12,7 @@ import com.disney.cast.platform.common.api.model.Result;
 import com.disney.cast.platform.estp.api.app.model.Alert;
 import com.disney.cast.platform.estp.api.snow.tables.AlertTableApi;
 import com.disney.cast.platform.estp.api.snow.tables.model.AlertTableRecord;
+import com.disney.cast.platform.estp.data.DataManager;
 import com.disney.cast.platform.estp.test.api.AbstractEstpApiTest;
 import com.fasterxml.jackson.core.type.TypeReference;
 
@@ -32,7 +32,7 @@ public class AlertSteps extends AbstractEstpApiTest {
 
     @Given("^I send a request to alert$")
     public void i_send_a_request_to_alert() throws Throwable {
-        ALERT_DATA_MANAGER.addActive(1);
+        DataManager.getAlertDataManager().addActive(1);
 
         AlertTableApi alertTableApi = new AlertTableApi();
         List<AlertTableRecord> activeAlertsRecordsFromTableApi = alertTableApi
