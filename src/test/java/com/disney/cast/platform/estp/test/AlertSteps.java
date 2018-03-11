@@ -50,9 +50,9 @@ public class AlertSteps extends AbstractEstpApiTest {
         getAlertResponse = getAlert(clients().get(PLANNER.toString()));
     }
 
-    @Then("^The status code should be 200$")
-    public void the_status_code_should_be_200() throws Throwable {
-        Assert.assertEquals(200, getAlertResponse.getStatus());
+    @Then("^The status code should be \"([^\"]*)\"$")
+    public void the_status_code_should_be(String expected) throws Throwable {
+        Assert.assertEquals(Integer.parseInt(expected), getAlertResponse.getStatus());
     }
 
     @And("^I should see all the alerts for the current user$")
