@@ -1,5 +1,5 @@
 @tag
-Feature: Config
+Feature: Snow Config
 Description for Snow tests
 
   @tag1
