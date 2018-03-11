@@ -4,12 +4,17 @@ import static com.disney.cast.platform.estp.test.ui.UiAuthLevel.SNOWADMIN;
 
 import java.net.MalformedURLException;
 
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+
 import com.disney.automation.webframework.config.User;
+import com.disney.automation.webframework.webdriver.Drivers;
 import com.disney.cast.platform.estp.test.ui.AbstractEstpUiTest;
 import com.disney.cast.platform.estp.ui.app.pages.ApplicationsLoginPage;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+import ru.yandex.qatools.allure.annotations.Attachment;
 
 public class LoginSteps extends AbstractEstpUiTest {
 
@@ -38,6 +43,7 @@ public class LoginSteps extends AbstractEstpUiTest {
 
         // assertTrue("Planner should have been able to log in. Home page is not displayed",
         // homePage.isVisible());
+        makeScreenshotOnFailure();
     }
 
     @Given("^Enter invalid username and valid password$")
@@ -58,6 +64,11 @@ public class LoginSteps extends AbstractEstpUiTest {
     @Then("^Wrong password message is displayed$")
     public void wrong_password_message_is_displayed() throws Throwable {
         // Write code here that turns the phrase above into concrete actions
+    }
+
+    @Attachment("Screenshot on failure")
+    public byte[] makeScreenshotOnFailure() {
+        return ((TakesScreenshot) Drivers.INSTANCE.get()).getScreenshotAs(OutputType.BYTES);
     }
 
 }
