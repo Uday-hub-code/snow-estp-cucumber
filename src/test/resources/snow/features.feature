@@ -1,17 +1,16 @@
-Feature: Snow
+Feature: Features
 Description for Snow tests
 
   @SeverityLevel.NORMAL
-  Scenario: Features
+  Scenario: Create feature
 	This is the description for this scenario.
     Given Login page is displayed
     And Enter valid credentials
     Then Welcome page is displayed
 
   @SeverityLevel.NORMAL
-  Scenario: Configs
+  Scenario: Delete feature
 	This is the description for this scenario.
     Given Login page is displayed
     And Enter valid credentials
     Then Welcome page is displayed
-    
