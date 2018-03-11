@@ -58,9 +58,9 @@ public class LoginSteps extends AbstractEstpUiTest {
     }
 
     @Then("^I should see an error here$")
-    public void i_should_see_an_error_here() throws Throwable {
+    public void i_should_see_an_error_here() {
         // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        throw new PendingException("Fix me!");
     }
 
 }
