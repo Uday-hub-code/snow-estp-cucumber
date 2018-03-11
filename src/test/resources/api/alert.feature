@@ -7,7 +7,7 @@ Description for API tests
 	This is the description for this scenario.
     Given I create an alert
     When I send a request to alert
-    Then The status code should be "200"
+    Then The status code should be "201"
     And I should see all the alerts for the current user
     But Delete alerts created
 
