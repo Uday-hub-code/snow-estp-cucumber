@@ -1,6 +1,5 @@
 package com.disney.cast.platform.estp.test.api;
 
-import static com.disney.cast.platform.estp.api.app.AlertApi.getAlert;
 import static com.disney.cast.platform.estp.test.api.ApiAuthLevel.PLANNER;
 import static org.junit.Assert.assertEquals;
 
@@ -13,11 +12,10 @@ import org.junit.Assert;
 import com.disney.automation.servicetesting.core.ApiTestResponse;
 import com.disney.cast.platform.common.api.app.model.Message;
 import com.disney.cast.platform.common.api.model.Result;
+import com.disney.cast.platform.estp.api.app.AlertApi;
 import com.disney.cast.platform.estp.api.app.model.Alert;
 import com.disney.cast.platform.estp.api.snow.tables.model.AlertTableRecord;
 import com.disney.cast.platform.estp.data.DataManager;
-import com.disney.cast.platform.estp.test.api.AbstractEstpApiTest;
-import com.disney.cast.platform.estp.test.api.ApiAuthLevel;
 import com.fasterxml.jackson.core.type.TypeReference;
 
 import cucumber.api.java.en.And;
@@ -55,13 +53,16 @@ public class AlertSteps extends AbstractEstpApiTest {
 
     @When("^I send a request to alert with wrong user$")
     public void i_send_a_request_to_alert_with_wrong_user() throws Throwable {
-        response = getAlert(clients().get(ApiAuthLevel.WRONG_AUTH.toString()));
+        AlertApi alertApi = new AlertApi();
+        response = alertApi.get(clients().get(ApiAuthLevel.WRONG_AUTH.toString()));
         attachJson(response.getBodyString());
     }
 
     @When("^I send a request to alert$")
     public void i_send_a_request_to_alert() throws Throwable {
-        response = getAlert(clients().get(PLANNER.toString()));
+        AlertApi alertApi = new AlertApi();
+        attachJson(alertApi.getRequest().getBodyString());
+        response = alertApi.get(clients().get(PLANNER.toString()));
         attachJson(response.getBodyString());
     }
 
