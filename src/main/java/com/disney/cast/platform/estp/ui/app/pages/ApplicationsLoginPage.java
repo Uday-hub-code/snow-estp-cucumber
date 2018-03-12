@@ -5,6 +5,7 @@ import java.net.URL;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -37,6 +38,13 @@ public class ApplicationsLoginPage {
         this.driver = Drivers.INSTANCE.get();
         this.driver.get(getOwnUrl());
         PageFactory.initElements(driver, this);
+        printSessionId();
+    }
+
+    private void printSessionId() {
+        String message = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s",
+                (((RemoteWebDriver) driver).getSessionId()).toString(), System.getenv("JOB_NAME"));
+        System.out.println(message);
     }
 
     public <T extends PageObject> T logIn(String userName, String userPassword, Class<T> nextPageClass)
