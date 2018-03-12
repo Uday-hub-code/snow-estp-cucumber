@@ -37,8 +37,8 @@ public class ApplicationsLoginPage {
         Drivers.INSTANCE.create(Browser.CHROME, sauceUrl);
         this.driver = Drivers.INSTANCE.get();
         this.driver.get(getOwnUrl());
-        PageFactory.initElements(driver, this);
         printSessionId();
+        PageFactory.initElements(driver, this);
     }
 
     private void printSessionId() {
