@@ -1,5 +1,8 @@
 package com.disney.cast.platform.estp.ui.app.pages;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,6 +17,9 @@ import com.disney.automation.webframework.webdriver.Drivers;
  */
 public class ApplicationsLoginPage {
 
+    public static final String USERNAME = "jose.x.oropeza.-nd";
+    public static final String ACCESS_KEY = "7914dc3b-dbc8-45ec-94d7-353b4f71efef";
+
     private WebDriver driver;
 
     @FindBy(id = "user_name")
@@ -25,8 +31,9 @@ public class ApplicationsLoginPage {
     @FindBy(id = "sysverb_login")
     private WebElement loginButton;
 
-    public ApplicationsLoginPage() {
-        Drivers.INSTANCE.create(Browser.CHROME);
+    public ApplicationsLoginPage() throws MalformedURLException {
+        URL sauceUrl = new URL("https://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.saucelabs.com:443/wd/hub");
+        Drivers.INSTANCE.create(Browser.CHROME, sauceUrl);
         this.driver = Drivers.INSTANCE.get();
         this.driver.get(getOwnUrl());
         PageFactory.initElements(driver, this);
