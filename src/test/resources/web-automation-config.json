@@ -8,7 +8,7 @@
 		"scriptTimeout": 60,
 		"pollingEveryMs": 250,
 		"useSeleniumGrid": false,
-		"useListener": true
+		"useListener": false
 	},
 	"drivers": {
 		"CHROME": 
