@@ -21,7 +21,7 @@
 		<dependency>
 			<groupId>com.disney.cast.platform</groupId>
 			<artifactId>common-automation</artifactId>
-			<version>2.2.7</version>
+			<version>2.2.8</version>
 		</dependency>
         <dependency>
             <groupId>ru.yandex.qatools.allure</groupId>
