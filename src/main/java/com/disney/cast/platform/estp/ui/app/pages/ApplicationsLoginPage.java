@@ -33,7 +33,7 @@ public class ApplicationsLoginPage {
 
     public ApplicationsLoginPage() throws MalformedURLException {
         URL sauceUrl = new URL("https://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.saucelabs.com:443/wd/hub");
-        Drivers.INSTANCE.create(Browser.CHROME, sauceUrl);
+        Drivers.INSTANCE.create(Browser.CHROME);
         this.driver = Drivers.INSTANCE.get();
         this.driver.get(getOwnUrl());
         PageFactory.initElements(driver, this);
