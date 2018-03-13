@@ -1,7 +1,7 @@
 {
 	"isDebugMode": false,
 	"webdriver": {
-		"remoteURL": "http://localhost:4444/wd/hub",
+		"remoteURL": "https://jose.x.oropeza.-nd:7914dc3b-dbc8-45ec-94d7-353b4f71efef@ondemand.saucelabs.com:443/wd/hub",
 		"explicitTimeOut": 60,
 		"implicitTimeOut": 0,
 		"pageLoadTimeout": 60,
