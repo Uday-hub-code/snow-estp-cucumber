@@ -2,6 +2,7 @@ Feature: Snow
 Description for Snow tests
 
   @SeverityLevel.NORMAL
+  @ignore
   Scenario: Features
 	This is the description for this scenario.
     Given Login page is displayed
