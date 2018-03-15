@@ -1,10 +1,11 @@
 package com.disney.cast.platform.estp.test.ui;
 
-import static com.disney.cast.platform.estp.test.ui.UiAuthLevel.SNOWADMIN;
+import static org.junit.Assert.assertTrue;
 
 import java.net.MalformedURLException;
 
 import com.disney.automation.webframework.config.User;
+import com.disney.automation.webframework.visual.comparator.OcularResult;
 import com.disney.cast.platform.estp.ui.app.pages.ApplicationsLoginPage;
 
 import cucumber.api.java.en.Given;
@@ -16,7 +17,8 @@ public class LoginSteps extends AbstractEstpUiTest {
         super();
     }
 
-    private final User planner = users().get(SNOWADMIN.toString());
+    private final User planner = users().get(UiAuthLevel.PLANNER.toString());
+    private ApplicationsLoginPage loginPage;
 
     @Given("^Login page is displayed$")
     public void login_page_is_displayed() throws Throwable {
@@ -30,7 +32,7 @@ public class LoginSteps extends AbstractEstpUiTest {
 
     @Then("^Welcome page is displayed$")
     public void welcome_page_is_displayed() throws Throwable {
-        new ApplicationsLoginPage();
+        loginPage = new ApplicationsLoginPage();
         Thread.sleep(5000);
         attachScreenshot();
     }
@@ -53,6 +55,12 @@ public class LoginSteps extends AbstractEstpUiTest {
     @Then("^Wrong password message is displayed$")
     public void wrong_password_message_is_displayed() throws Throwable {
         // Write code here that turns the phrase above into concrete actions
+    }
+
+    @Then("^validateScreenshot$")
+    public void validatescreenshot() {
+        OcularResult ocularResult = loginPage.compare();
+        assertTrue("Images should be equals", ocularResult.isEqualsImages());
     }
 
 }

@@ -1,17 +1,24 @@
 package com.disney.cast.platform.estp.ui.app.pages;
 
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.disney.automation.webframework.pageobject.PageObject;
+import com.disney.automation.webframework.visual.Ocular;
+import com.disney.automation.webframework.visual.comparator.OcularResult;
+import com.disney.automation.webframework.visual.snapshot.Snap;
 import com.disney.automation.webframework.webdriver.Browser;
 import com.disney.automation.webframework.webdriver.Drivers;
 
 /**
  * @author roberto
  */
+@Snap("Login#{OPT}.png")
 public class ApplicationsLoginPage {
 
     private WebDriver driver;
@@ -50,5 +57,21 @@ public class ApplicationsLoginPage {
     protected String getOwnUrl() {
         return "http://www.disney.com";
         // return "https://wdprautomation.service-now.com/wdpr-cast/login.do";
+    }
+
+    public OcularResult compare() {
+        // a random pause to get different images
+        try {
+            TimeUnit.SECONDS.sleep(ThreadLocalRandom.current().nextInt(1, 10));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return Ocular
+                .snapshot()
+                .from(this)
+                .replaceAttribute("OPT", "")
+                .sample()
+                .using(driver)
+                .compare();
     }
 }
