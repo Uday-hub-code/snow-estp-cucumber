@@ -48,7 +48,7 @@ public class ApplicationsLoginPage {
     }
 
     protected String getOwnUrl() {
-        return "www.disney.com";
+        return "http://www.disney.com";
         // return "https://wdprautomation.service-now.com/wdpr-cast/login.do";
     }
 }
