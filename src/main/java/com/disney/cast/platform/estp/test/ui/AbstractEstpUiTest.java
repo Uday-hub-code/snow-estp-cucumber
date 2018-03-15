@@ -17,14 +17,17 @@ import ru.yandex.qatools.allure.annotations.Attachment;
 
 public abstract class AbstractEstpUiTest extends JUnit4WebDriverTest {
 
+    private static final String SNAPSHOT_FOLDER = "/mnt/16820B00820AE459/workspace/Disney/snow-estp-cucumber/target/snapshot";
+    private static final String RESULT_FOLDER = "./target/result";
+
     public AbstractEstpUiTest() throws MalformedURLException {
         super();
         ocularConfig();
     }
 
     private void ocularConfig() {
-        File resultFolder = new File("./target/result");
-        File snapshotFolder = new File("./target/snapshot");
+        File resultFolder = new File(RESULT_FOLDER);
+        File snapshotFolder = new File(SNAPSHOT_FOLDER);
 
         if (!resultFolder.exists()) {
             resultFolder.mkdir();
@@ -36,8 +39,8 @@ public abstract class AbstractEstpUiTest extends JUnit4WebDriverTest {
 
         Ocular
                 .config()
-                .resultPath(Paths.get("./target/result"))
-                .snapshotPath(Paths.get("./target/snapshot"))
+                .resultPath(Paths.get(RESULT_FOLDER))
+                .snapshotPath(Paths.get(SNAPSHOT_FOLDER))
                 .globalSimilarity(95)
                 .saveSnapshot(true);
     }
@@ -49,7 +52,7 @@ public abstract class AbstractEstpUiTest extends JUnit4WebDriverTest {
 
     @Attachment("Comparison")
     public byte[] attachResultImage(String name) {
-        File image = new File("./target/result/" + name + ".png");
+        File image = new File(RESULT_FOLDER + "/" + name + ".png");
         try {
             return Files.readAllBytes(image.toPath());
         } catch (IOException e) {
@@ -60,8 +63,7 @@ public abstract class AbstractEstpUiTest extends JUnit4WebDriverTest {
 
     @Attachment("Expected")
     public byte[] attachSnapshotImage(String name) {
-        File image = new File(
-                "/mnt/16820B00820AE459/workspace/Disney/snow-estp-cucumber/target/snapshot/" + name + ".png");
+        File image = new File(SNAPSHOT_FOLDER + "/" + name + ".png");
         try {
             return Files.readAllBytes(image.toPath());
         } catch (IOException e) {
