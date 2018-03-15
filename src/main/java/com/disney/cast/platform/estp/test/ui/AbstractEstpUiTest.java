@@ -60,7 +60,8 @@ public abstract class AbstractEstpUiTest extends JUnit4WebDriverTest {
 
     @Attachment("Expected")
     public byte[] attachSnapshotImage(String name) {
-        File image = new File("./target/snapshot/" + name + ".png");
+        File image = new File(
+                "/mnt/16820B00820AE459/workspace/Disney/snow-estp-cucumber/target/snapshot/" + name + ".png");
         try {
             return Files.readAllBytes(image.toPath());
         } catch (IOException e) {
