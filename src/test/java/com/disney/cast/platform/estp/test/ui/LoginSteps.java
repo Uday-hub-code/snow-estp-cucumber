@@ -31,7 +31,7 @@ public class LoginSteps extends AbstractEstpUiTest {
     @Then("^Welcome page is displayed$")
     public void welcome_page_is_displayed() throws Throwable {
         new ApplicationsLoginPage();
-        Thread.sleep(2000);
+        Thread.sleep(5000);
         attachScreenshot();
     }
 
