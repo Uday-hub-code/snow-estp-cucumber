@@ -16,13 +16,13 @@ public class ApplicationsLoginPage {
 
     private WebDriver driver;
 
-    @FindBy(id = "user_name")
+    @FindBy(id = "inputEmail")
     private WebElement userNameTextBox;
 
-    @FindBy(id = "user_password")
+    @FindBy(id = "inputPassword")
     private WebElement userPasswordTextBox;
 
-    @FindBy(id = "sysverb_login")
+    @FindBy(id = "submitButton")
     private WebElement loginButton;
 
     public ApplicationsLoginPage() {
@@ -48,6 +48,7 @@ public class ApplicationsLoginPage {
     }
 
     protected String getOwnUrl() {
-        return "https://wdprautomation.service-now.com/wdpr-cast/login.do";
+        return "https://hub.disney.com";
+        // return "https://wdprautomation.service-now.com/wdpr-cast/login.do";
     }
 }
