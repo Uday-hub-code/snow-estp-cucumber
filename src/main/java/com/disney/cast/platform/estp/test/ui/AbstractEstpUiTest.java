@@ -45,6 +45,11 @@ public abstract class AbstractEstpUiTest extends JUnit4WebDriverTest {
         return ((TakesScreenshot) Drivers.INSTANCE.get()).getScreenshotAs(OutputType.BYTES);
     }
 
+    @Attachment("Result")
+    public String attachResultImage() {
+        return "./target/result/Login.png";
+    }
+
     @Override
     protected Object[] setAuthLevels() {
         return UiAuthLevel.values();
