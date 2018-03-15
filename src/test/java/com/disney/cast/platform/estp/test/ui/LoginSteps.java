@@ -60,9 +60,9 @@ public class LoginSteps extends AbstractEstpUiTest {
     @Then("^validateScreenshot$")
     public void validatescreenshot() {
         OcularResult ocularResult = loginPage.compare();
-        assertTrue("Images should be equals", ocularResult.isEqualsImages());
         attachResultImage("Login");
         attachSnapshotImage("Login");
+        assertTrue("Images should be equals", ocularResult.isEqualsImages());
     }
 
 }
