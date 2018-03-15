@@ -7,9 +7,9 @@ Description for visual tests
     Given Login page is displayed
     Then validateScreenshot
     
-	@SeverityLevel.CRITICALs
+	@SeverityLevel.CRITICAL
   @Issue("PPE-1000")
-  @ManualTest
+  @manual_test
   Scenario: I want to validate that the home page is the same
     XXXXXXXXXXXXXXXXXXXXX
     Given: Login page is displayed
