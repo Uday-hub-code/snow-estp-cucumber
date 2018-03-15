@@ -1,7 +1,9 @@
 package com.disney.cast.platform.estp.test.ui;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
+import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import org.openqa.selenium.OutputType;
@@ -46,8 +48,25 @@ public abstract class AbstractEstpUiTest extends JUnit4WebDriverTest {
     }
 
     @Attachment("Result")
-    public String attachResultImage() {
-        return "./target/result/Login.png";
+    public byte[] attachResultImage(String name) {
+        File image = new File("./target/result/" + name + ".png");
+        try {
+            return Files.readAllBytes(image.toPath());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Attachment("Before")
+    public byte[] attachSnapshotImage(String name) {
+        File image = new File("./target/snapshot/" + name + ".png");
+        try {
+            return Files.readAllBytes(image.toPath());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override

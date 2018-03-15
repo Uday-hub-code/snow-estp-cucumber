@@ -61,7 +61,8 @@ public class LoginSteps extends AbstractEstpUiTest {
     public void validatescreenshot() {
         OcularResult ocularResult = loginPage.compare();
         assertTrue("Images should be equals", ocularResult.isEqualsImages());
-        attachResultImage();
+        attachResultImage("Login");
+        attachSnapshotImage("Login");
     }
 
 }
