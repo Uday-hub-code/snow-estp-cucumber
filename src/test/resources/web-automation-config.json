@@ -11,14 +11,16 @@
 		"useListener": true
 	},
 	"drivers": {
-		"CHROME": 
-		{
-			"arguments": 
-			[
+		"CHROME": {
+			"arguments": [
+				"--headless",
+				"--ignore-ssl-errors=yes",
+				"--load-images=yes",
+				"--web-security=false",
+				"--webdriver-loglevel=NONE"
 			],
+			"capabilities": {
 
-			"capabilities": 
-			{
 			}
 		}
 	},
