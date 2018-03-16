@@ -67,12 +67,23 @@ public class LoginSteps extends AbstractEstpUiTest {
         assertTrue("Images should be equals", ocularResult.isEqualsImages());
     }
 
+    @Then("^testPasses$")
+    public void testPasses() {
+        assertTrue(true);
+    }
+
+    @Then("^testDontPass$")
+    public void testDontPass() {
+        assertTrue(false);
+    }
+
     @After("@Visual")
     public void after(Scenario scenario) {
         if (scenario.isFailed()) {
-            scenario.write("Test failed and enter hook");
+            scenario.embed(attachResultImage(scenario.getName()), "image/png");
+            scenario.embed(attachSnapshotImage(scenario.getName()), "image/png");
         } else {
-            scenario.write("Test not failed and enter hook");
+            scenario.embed(attachResultImage(scenario.getName()), "image/png");
         }
         System.out.println("Finished running scenario: " + scenario.getName());
     }
