@@ -13,6 +13,8 @@ import com.disney.automation.webframework.tests.JUnit4WebDriverTest;
 import com.disney.automation.webframework.visual.Ocular;
 import com.disney.automation.webframework.webdriver.Drivers;
 
+import cucumber.api.Scenario;
+import cucumber.api.java.After;
 import ru.yandex.qatools.allure.annotations.Attachment;
 
 public abstract class AbstractEstpUiTest extends JUnit4WebDriverTest {
@@ -70,6 +72,16 @@ public abstract class AbstractEstpUiTest extends JUnit4WebDriverTest {
             e.printStackTrace();
         }
         return null;
+    }
+
+    @After("@Visual")
+    public void after(Scenario scenario) {
+        if (scenario.isFailed()) {
+            scenario.write("Test failed and enter hook");
+        } else {
+            scenario.write("Test not failed and enter hook");
+        }
+        System.out.println("Finished running scenario: " + scenario.getName());
     }
 
     @Override
