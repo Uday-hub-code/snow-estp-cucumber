@@ -17,7 +17,7 @@ import ru.yandex.qatools.allure.annotations.Attachment;
 
 public abstract class AbstractEstpUiTest extends JUnit4WebDriverTest {
 
-    private static final String SNAPSHOT_FOLDER = "/mnt/16820B00820AE459/workspace/Disney/snow-estp-cucumber/target/snapshot";
+    private static final String SNAPSHOT_FOLDER = "./target/snapshot";
     private static final String RESULT_FOLDER = "./target/result";
 
     public AbstractEstpUiTest() throws MalformedURLException {
@@ -30,11 +30,11 @@ public abstract class AbstractEstpUiTest extends JUnit4WebDriverTest {
         File snapshotFolder = new File(SNAPSHOT_FOLDER);
 
         if (!resultFolder.exists()) {
-            resultFolder.mkdir();
+            resultFolder.mkdirs();
         }
 
         if (!snapshotFolder.exists()) {
-            snapshotFolder.mkdir();
+            snapshotFolder.mkdirs();
         }
 
         Ocular
