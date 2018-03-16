@@ -8,6 +8,8 @@ import com.disney.automation.webframework.config.User;
 import com.disney.automation.webframework.visual.comparator.OcularResult;
 import com.disney.cast.platform.estp.ui.app.pages.ApplicationsLoginPage;
 
+import cucumber.api.Scenario;
+import cucumber.api.java.After;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 
@@ -63,6 +65,16 @@ public class LoginSteps extends AbstractEstpUiTest {
         attachResultImage("Login");
         attachSnapshotImage("Login");
         assertTrue("Images should be equals", ocularResult.isEqualsImages());
+    }
+
+    @After("@Visual")
+    public void after(Scenario scenario) {
+        if (scenario.isFailed()) {
+            scenario.write("Test failed and enter hook");
+        } else {
+            scenario.write("Test not failed and enter hook");
+        }
+        System.out.println("Finished running scenario: " + scenario.getName());
     }
 
 }
