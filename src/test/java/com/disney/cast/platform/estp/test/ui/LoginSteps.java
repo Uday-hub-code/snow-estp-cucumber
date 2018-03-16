@@ -62,8 +62,6 @@ public class LoginSteps extends AbstractEstpUiTest {
     @Then("^validateScreenshot$")
     public void validatescreenshot() {
         OcularResult ocularResult = loginPage.compare();
-        attachResultImage("Login");
-        attachSnapshotImage("Login");
         assertTrue("Images should be equals", ocularResult.isEqualsImages());
     }
 
@@ -80,6 +78,7 @@ public class LoginSteps extends AbstractEstpUiTest {
     @After("@Visual")
     public void after(Scenario scenario) {
         if (scenario.isFailed()) {
+            attachResultImage(scenario.getName());
             scenario.embed(attachResultImage(scenario.getName()), "image/png");
             scenario.embed(attachSnapshotImage(scenario.getName()), "image/png");
         } else {

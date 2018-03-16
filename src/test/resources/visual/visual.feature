@@ -7,17 +7,3 @@ Description for visual tests
     Given Login page is displayed
     When Welcome page is displayed
     Then validateScreenshot
-
-  @Visual
-  Scenario: Login
-	test that pass.
-    Given Login page is displayed
-    When Welcome page is displayed
-    Then testPasses
-
-  @Visual
-  Scenario: Login
-	test that pass.
-    Given Login page is displayed
-    When Welcome page is displayed
-    Then testDontPass
