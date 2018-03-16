@@ -79,10 +79,10 @@ public class LoginSteps extends AbstractEstpUiTest {
     public void after(Scenario scenario) {
         if (scenario.isFailed()) {
             attachResultImage(scenario.getName());
-            scenario.embed(attachResultImage(scenario.getName()), "image/png");
-            scenario.embed(attachSnapshotImage(scenario.getName()), "image/png");
+            attachSampleImage(scenario.getName());
+            attachSnapshotImage(scenario.getName());
         } else {
-            scenario.embed(attachResultImage(scenario.getName()), "image/png");
+            attachSampleImage(scenario.getName());
         }
         System.out.println("Finished running scenario: " + scenario.getName());
     }
