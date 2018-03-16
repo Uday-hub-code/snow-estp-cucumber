@@ -110,8 +110,8 @@ public class ApplicationsLoginPage {
                 .from(this)
                 .replaceAttribute("OPT", "_logoButton")
                 .sample()
-                .element(logoButton)
                 .using(driver)
+                .element(logoButton)
                 .compare();
     }
 }
