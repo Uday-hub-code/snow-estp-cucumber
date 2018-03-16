@@ -99,12 +99,6 @@ public class ApplicationsLoginPage {
     }
 
     public OcularResult compareLogoButton() {
-        // a random pause to get different images
-        try {
-            TimeUnit.SECONDS.sleep(ThreadLocalRandom.current().nextInt(1, 10));
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         return Ocular
                 .snapshot()
                 .from(this)
