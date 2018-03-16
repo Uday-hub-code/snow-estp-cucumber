@@ -32,6 +32,12 @@ public class ApplicationsLoginPage {
     @FindBy(id = "submitButton")
     private WebElement loginButton;
 
+    @FindBy(className = "video_playlist_inline")
+    private WebElement videoSection;
+
+    @FindBy(className = "goc-logo-image")
+    private WebElement logoButton;
+
     public ApplicationsLoginPage() {
         Drivers.INSTANCE.create(Browser.CHROME);
         this.driver = Drivers.INSTANCE.get();
@@ -85,8 +91,26 @@ public class ApplicationsLoginPage {
         return Ocular
                 .snapshot()
                 .from(this)
-                .replaceAttribute("OPT", "")
+                .replaceAttribute("OPT", "_noVideo")
                 .sample()
+                .using(driver)
+                .excluding(videoSection)
+                .compare();
+    }
+
+    public OcularResult compareLogoButton() {
+        // a random pause to get different images
+        try {
+            TimeUnit.SECONDS.sleep(ThreadLocalRandom.current().nextInt(1, 10));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return Ocular
+                .snapshot()
+                .from(this)
+                .replaceAttribute("OPT", "_logoButton")
+                .sample()
+                .element(logoButton)
                 .using(driver)
                 .compare();
     }

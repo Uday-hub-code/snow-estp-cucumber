@@ -65,14 +65,16 @@ public class LoginSteps extends AbstractEstpUiTest {
         assertTrue("Images should be equals", ocularResult.isEqualsImages());
     }
 
-    @Then("^testPasses$")
-    public void testPasses() {
-        assertTrue(true);
+    @Then("^validateScreenshot excluding video$")
+    public void validateScreenshotExcludingVideo() {
+        OcularResult ocularResult = loginPage.compareExcludingVideo();
+        assertTrue("Images should be equals", ocularResult.isEqualsImages());
     }
 
-    @Then("^testDontPass$")
-    public void testDontPass() {
-        assertTrue(false);
+    @Then("^validate logo button$")
+    public void validateLogoButton() {
+        OcularResult ocularResult = loginPage.compareLogoButton();
+        assertTrue("Images should be equals", ocularResult.isEqualsImages());
     }
 
     @After("@Visual")
