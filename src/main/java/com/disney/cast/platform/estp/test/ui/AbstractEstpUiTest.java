@@ -40,7 +40,7 @@ public abstract class AbstractEstpUiTest extends JUnit4WebDriverTest {
         }
 
         if (!sampleFolder.exists()) {
-            snapshotFolder.mkdirs();
+            sampleFolder.mkdirs();
         }
 
         Ocular
