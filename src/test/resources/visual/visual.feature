@@ -2,21 +2,21 @@ Feature: Visual
 Description for visual tests
 
   @Visual
-  Scenario: Login
+  Scenario: Validate home screen
 	This is the description for this scenario.
     Given Login page is displayed
     When Welcome page is displayed
-    Then validateScreenshot
+    Then validate Home screen
 
   @Visual
-  Scenario: Login Excluding Video Section
+  Scenario: Validate home screen excluding video section
 	This is the description for this scenario.
     Given Login page is displayed
     When Welcome page is displayed
-    Then validateScreenshot excluding video section
+    Then validate Home screen excluding video section
 
   @Visual
-  Scenario: Login Validate Logo Button
+  Scenario: Validate Logo Button
 	This is the description for this scenario.
     Given Login page is displayed
     When Welcome page is displayed

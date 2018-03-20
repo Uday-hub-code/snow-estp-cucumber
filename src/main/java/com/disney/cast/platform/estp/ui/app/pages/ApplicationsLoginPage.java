@@ -18,7 +18,7 @@ import com.disney.automation.webframework.webdriver.Drivers;
 /**
  * @author roberto
  */
-@Snap("Login#{OPT}.png")
+@Snap("#{OPT}.png")
 public class ApplicationsLoginPage {
 
     private WebDriver driver;
@@ -75,7 +75,7 @@ public class ApplicationsLoginPage {
         return Ocular
                 .snapshot()
                 .from(this)
-                .replaceAttribute("OPT", "")
+                .replaceAttribute("OPT", "Validate home screen")
                 .sample()
                 .using(driver)
                 .compare();
@@ -91,7 +91,7 @@ public class ApplicationsLoginPage {
         return Ocular
                 .snapshot()
                 .from(this)
-                .replaceAttribute("OPT", " Excluding Video Section")
+                .replaceAttribute("OPT", "Validate home screen excluding video section")
                 .sample()
                 .using(driver)
                 .excluding(videoSection)
@@ -102,7 +102,7 @@ public class ApplicationsLoginPage {
         return Ocular
                 .snapshot()
                 .from(this)
-                .replaceAttribute("OPT", " Validate Logo Button")
+                .replaceAttribute("OPT", "Validate Logo Button")
                 .sample()
                 .using(driver)
                 .element(logoButton)

@@ -59,13 +59,13 @@ public class LoginSteps extends AbstractEstpUiTest {
         // Write code here that turns the phrase above into concrete actions
     }
 
-    @Then("^validateScreenshot$")
+    @Then("^validate Home screen$")
     public void validatescreenshot() {
         OcularResult ocularResult = loginPage.compare();
         assertTrue("Images should be equals", ocularResult.isEqualsImages());
     }
 
-    @Then("^validateScreenshot excluding video section$")
+    @Then("^validate Home screen excluding video section$")
     public void validateScreenshotExcludingVideo() {
         OcularResult ocularResult = loginPage.compareExcludingVideo();
         assertTrue("Images should be equals", ocularResult.isEqualsImages());
