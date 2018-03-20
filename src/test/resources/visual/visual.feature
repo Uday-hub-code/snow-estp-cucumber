@@ -9,14 +9,14 @@ Description for visual tests
     Then validateScreenshot
 
   @Visual
-  Scenario: Login_noVideo
+  Scenario: Login Excluding Video Section
 	This is the description for this scenario.
     Given Login page is displayed
     When Welcome page is displayed
-    Then validateScreenshot excluding video
+    Then validateScreenshot excluding video section
 
   @Visual
-  Scenario: Login_logoButton
+  Scenario: Login Validate Logo Button
 	This is the description for this scenario.
     Given Login page is displayed
     When Welcome page is displayed

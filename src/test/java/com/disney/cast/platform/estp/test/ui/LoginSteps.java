@@ -65,7 +65,7 @@ public class LoginSteps extends AbstractEstpUiTest {
         assertTrue("Images should be equals", ocularResult.isEqualsImages());
     }
 
-    @Then("^validateScreenshot excluding video$")
+    @Then("^validateScreenshot excluding video section$")
     public void validateScreenshotExcludingVideo() {
         OcularResult ocularResult = loginPage.compareExcludingVideo();
         assertTrue("Images should be equals", ocularResult.isEqualsImages());

@@ -91,7 +91,7 @@ public class ApplicationsLoginPage {
         return Ocular
                 .snapshot()
                 .from(this)
-                .replaceAttribute("OPT", "_noVideo")
+                .replaceAttribute("OPT", " Excluding Video Section")
                 .sample()
                 .using(driver)
                 .excluding(videoSection)
@@ -102,7 +102,7 @@ public class ApplicationsLoginPage {
         return Ocular
                 .snapshot()
                 .from(this)
-                .replaceAttribute("OPT", "_logoButton")
+                .replaceAttribute("OPT", " Validate Logo Button")
                 .sample()
                 .using(driver)
                 .element(logoButton)
